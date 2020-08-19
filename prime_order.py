@@ -1,4 +1,3 @@
-import sys
 import argparse
 from time import sleep
 from pathlib import Path
@@ -6,14 +5,7 @@ from pathlib import Path
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 
-url_base = "https://primenow.amazon.com"
-url_account_address = "https://primenow.amazon.com/account/address"
-url_404 = "https://primenow.amazon.com/404"
-url_signout = "https://primenow.amazon.com/signout?ref_=pn_gw_nav_account_signout&returnUrl=https%3A%2F%2Fprimenow.amazon.com%2Fsignin"
-url_cart = 'https://primenow.amazon.com/cart?ref_=pn_gw_nav_cart'
-url_past_purchased_items = "https://primenow.amazon.com/shop-past-purchases?ref_=pn_gw_nav_account_spp"
-url_your_orders = "https://primenow.amazon.com/yourOrders?ref_=pn_spp_nav_account_order"
-
+import constants
 
 user_home_dir = str(Path.home())
 options = webdriver.ChromeOptions()
@@ -28,16 +20,16 @@ def sign_out_in(user_name, password):
     """Attempts to sing in use with passed credentials
     :return True is user signed in successfully """
 
-    driver.get(url_signout)
+    driver.get(constants.URL_SIGNOUT)
     driver.find_element_by_id("ap_email").send_keys(user_name)
     driver.find_element_by_id("ap_password").send_keys(password)
     sign_in_button = driver.find_element_by_id("signInSubmit")
     driver.execute_script("arguments[0].click()", sign_in_button)
     sleep(1)
     # check successful sign in by checking if `url_account_address` is reachable
-    driver.get(url_account_address)
+    driver.get(constants.URL_ACCOUNT_ADDRESS)
     sleep(1)
-    if driver.current_url == url_account_address:
+    if driver.current_url == constants.URL_ACCOUNT_ADDRESS:
         print(f"User {user_name} signed in successfully!")
         return True
     else:
@@ -47,7 +39,7 @@ def sign_out_in(user_name, password):
 
 def get_orders_list():
     """ :returns list of Completed Orders from 'Your Order' screen"""
-    driver.get(url_your_orders)
+    driver.get(constants.URL_YOUR_ORDERS)
     sleep(1)
     orders_dict = dict()
 
@@ -173,9 +165,9 @@ def main():
     try:
         sign_out_in(args.user, args.password)
         print("Checking the state of your cart...")
-        if not is_cart_empty(url_cart):
+        if not is_cart_empty(constants.URL_CART):
             if get_yes_no_input("There are items in your cart. Would you like to empty your cart first?"):
-                clear_cart(url_cart)
+                clear_cart(constants.URL_CART)
         else:
             print("Cart is empty")
 
