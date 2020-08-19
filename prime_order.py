@@ -1,6 +1,7 @@
 import sys
 import argparse
 from time import sleep
+from pathlib import Path
 
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
@@ -13,11 +14,13 @@ url_cart = 'https://primenow.amazon.com/cart?ref_=pn_gw_nav_cart'
 url_past_purchased_items = "https://primenow.amazon.com/shop-past-purchases?ref_=pn_gw_nav_account_spp"
 url_your_orders = "https://primenow.amazon.com/yourOrders?ref_=pn_spp_nav_account_order"
 
+
+user_home_dir = str(Path.home())
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 # headless works if we are using execute_script to 'click'
 options.add_argument('--headless')
-options.add_argument('--user-data-dir=/home/milan/.config/google-chrome/Default')
+options.add_argument(f"--user-data-dir={user_home_dir}/.config/google-chrome/prime-order-tool")
 driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=options)
 
 
