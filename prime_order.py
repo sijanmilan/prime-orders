@@ -7,14 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 import constants
 
-user_home_dir = str(Path.home())
-options = webdriver.ChromeOptions()
-options.add_argument('--ignore-certificate-errors')
-# headless works if we are using execute_script to 'click'
-options.add_argument('--headless')
-options.add_argument(f"--user-data-dir={user_home_dir}/.config/google-chrome/prime-order-tool")
-driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=options)
-
+driver = None
 
 def sign_out_in(user_name, password):
     """Attempts to sing in use with passed credentials
@@ -157,10 +150,22 @@ def is_cart_empty(cart_url):
 
 
 def main():
+    global driver
     parser = argparse.ArgumentParser(description="Copy items from Past Orders on Amazon Prime now to your cart")
     parser.add_argument('user',  help='Username for Prime Now account')
     parser.add_argument('password', help='Password for Prime Now account')
+    parser.add_argument('--driverpath', help='Path to chromedriver, unless already in users PATH')
     args = parser.parse_args()
+
+    user_home_dir = str(Path.home())
+    options = webdriver.ChromeOptions()
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--headless')
+    options.add_argument(f"--user-data-dir={user_home_dir}/.config/google-chrome/prime-order-tool")
+    if args.driverpath:
+        driver = webdriver.Chrome(args.driverpath, options=options)
+    else:
+        driver = webdriver.Chrome(options=options)
 
     try:
         sign_out_in(args.user, args.password)
