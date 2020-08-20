@@ -192,6 +192,7 @@ def main():
                 copy_order_to_cart(selected_order["url"])
     finally:
         print("Finished. Exiting")
+        driver.close()
         driver.quit()
 
 
