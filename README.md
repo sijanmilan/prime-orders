@@ -19,6 +19,23 @@ Notes:
 
 ## How to use this script
 
-TBD
+- Install Python 3 (you  have done that by now probably)  
+- Install [Chrome Webdriver](https://chromedriver.chromium.org/downloads) 
+- Add chromedriver installation directory to your `PATH`. This is optional, alternatively you can pass chromedriver
+as command line argument
+- Install requirements obviously (`pip install -r requirements`)
+### Execute script
+
+If you have set chromedriver in your `PATH`, run the script using
+```
+python prime_order.py USER PASS 
+```
+or, if you need to specify path to chromedriver
+```
+python prime_order.py USER PASS --driverpath /path/to/chromedriver
+```
+where `USER` and `PASS` are your Prime Now credentials 
+
+
 
 
