@@ -7,9 +7,10 @@ The main premise is that households have more or less the same shopping list tha
 Prime Now interface does not allow users to 'bulk import / copy' shopping list and add / remove items. It forces users
 to search for every single item and add them to the cart.
 
-This tools uses your "Order History" and allows you to copy multiple previous orders into your cart.
+This (CLI) tools uses your "Order History" and allows you to copy (all items from) multiple previous orders into your cart.
 
-From there using Prime Now app you are able to remove / add items and checkout.
+From there using Prime Now app you are able to adjust quantities and checkout.
+Tool also allows you to empty your cart
 
 
 Notes:
