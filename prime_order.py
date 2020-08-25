@@ -9,6 +9,8 @@ import constants
 
 
 class PrimeOrderManager:
+    """Handles adding Orders from Order history to the Cart, and emptying the Cart
+    Purchase / Checkout needs to be carried out manually"""
     def __init__(self, driver):
         self.driver = driver
 
