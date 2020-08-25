@@ -2,7 +2,7 @@
 
 The aim of this tool is to help creation of (repeated) orders on (Amazon) Prime Now.
 
-The main premise is being that households have more or less the same shopping list that they buy periodically.
+The main premise is that households have more or less the same shopping list that they buy periodically.
 
 Prime Now interface does not allow users to 'bulk import / copy' shopping list and add / remove items. It forces users
 to search for every single item and add them to the cart.
@@ -39,6 +39,13 @@ example (linux):
 python prime_order.py my@email.com myPass --driverpath /usr/lib/chromium-browser/chromedriver
 ```
 where `USER` and `PASS` are your Prime Now credentials 
+
+## COLLABORATION, LICENSE, WARRANTY 
+
+* Feel free to do whatever you like with this.
+* If you like this and would like to see more features added let me know
+* if you would like to collaborate or have any suggestions I'd love to hear from you: sijanmilan at gmail
+* Use at your own risk
 
 
 
