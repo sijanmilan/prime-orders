@@ -35,11 +35,13 @@ or, if you need to specify path to chromedriver
 ```
 python prime_order.py USER PASS --driverpath /path/to/chromedriver
 ```
-example (linux): 
+where `USER` and `PASS` are your Prime Now credentials.
+
+Example (linux): 
 ```
 python prime_order.py my@email.com myPass --driverpath /usr/lib/chromium-browser/chromedriver
 ```
-where `USER` and `PASS` are your Prime Now credentials 
+
 
 ## COLLABORATION, LICENSE, WARRANTY 
 
