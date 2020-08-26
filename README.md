@@ -45,7 +45,6 @@ python prime_order.py my@email.com myPass --driverpath /usr/lib/chromium-browser
 
 ## COLLABORATION, LICENSE, WARRANTY 
 
-* Feel free to do whatever you like with this.
 * If you like this and would like to see more features added let me know
 * if you would like to collaborate or have any suggestions I'd love to hear from you: sijanmilan at gmail
 * Use at your own risk
